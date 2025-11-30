@@ -12,9 +12,10 @@ body{
     font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
     margin:0;
     color:#222;
-    /* Background image with gradient overlay for contrast. Use JPEG fallback first (more widely supported),
-       then HEIC as a fallback if supported by the browser. */
-    background: linear-gradient(rgba(255,255,255,0.45), rgba(255,255,255,0.45)), url("assets/photo-output.jpg");
+     /* Background image with subtle gradient overlay for contrast. Use JPEG fallback first (widely supported).
+         The overlay is intentionally light so the image remains visible behind the content. */
+     background: linear-gradient(rgba(255,255,255,0.22), rgba(255,255,255,0.22)), url("assets/photo-output.jpg");
+     background-blend-mode: overlay;
     /* include HEIC as an additional fallback source (browsers that support it could use it) */
     /* note: multiple url() values are not widely used for true fallbacks, but the JPEG will be used by most browsers */
     background-size: cover;
@@ -22,6 +23,19 @@ body{
     background-repeat: no-repeat;
     background-attachment: fixed;
     line-height:1.45;
+}
+
+html, body { height: 100%; }
+
+/* Keep header above the background image */
+.site-header{ position: relative; z-index: 60 }
+
+/* Make content panels slightly translucent so background shows through while keeping text readable */
+.year-content, .feature, .features-grid > .feature, .site-footer, .contact { background: rgba(255,255,255,0.88); }
+
+@media (max-width:720px){
+    /* Slightly stronger overlay on small screens for legibility */
+    body{ background: linear-gradient(rgba(255,255,255,0.32), rgba(255,255,255,0.32)), url("assets/photo-output.jpg"); }
 }
 
 
