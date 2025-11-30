@@ -12,12 +12,8 @@ body{
     font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
     margin:0;
     color:#222;
-     /* Background image with subtle gradient overlay for contrast. Use JPEG fallback first (widely supported).
-         The overlay is intentionally light so the image remains visible behind the content. */
-     background: linear-gradient(rgba(255,255,255,0.22), rgba(255,255,255,0.22)), url("assets/photo-output.jpg");
-     background-blend-mode: overlay;
-    /* include HEIC as an additional fallback source (browsers that support it could use it) */
-    /* note: multiple url() values are not widely used for true fallbacks, but the JPEG will be used by most browsers */
+    /* Darken background slightly to reduce brightness and improve contrast */
+    background: linear-gradient(rgba(0,0,0,0.44), rgba(0,0,0,0.44)), url("assets/photo-output.jpg");
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -31,11 +27,11 @@ html, body { height: 100%; }
 .site-header{ position: relative; z-index: 60 }
 
 /* Make content panels slightly translucent so background shows through while keeping text readable */
-.year-content, .feature, .features-grid > .feature, .site-footer, .contact { background: rgba(255,255,255,0.88); }
+.year-content, .feature, .features-grid > .feature, .site-footer, .contact { background: rgba(255,255,255,0.98); }
 
 @media (max-width:720px){
-    /* Slightly stronger overlay on small screens for legibility */
-    body{ background: linear-gradient(rgba(255,255,255,0.32), rgba(255,255,255,0.32)), url("assets/photo-output.jpg"); }
+    /* Slightly stronger (but still dark) overlay on small screens for legibility */
+    body{ background: linear-gradient(rgba(0,0,0,0.52), rgba(0,0,0,0.52)), url("assets/photo-output.jpg"); }
 }
 
 
@@ -58,11 +54,24 @@ html, body { height: 100%; }
 .hero-copy{flex:1;min-width:220px}
 .hero-copy h1{margin-bottom:8px}
 .hero-media{flex:0 0 340px;display:flex;justify-content:center}
+.hero-copy{animation:fadeUp .7s ease both}
+.hero-media{animation:fadeUp .9s ease both;animation-delay:.12s}
+
+/* Hero typography and contrast adjustments */
+.hero-copy h1{color:#ffffff; text-shadow:0 6px 18px rgba(0,0,0,0.45); font-size:clamp(30px,4vw,46px);}
+.hero-copy p{color:rgba(255,255,255,0.95); font-size:1.05rem; line-height:1.6; max-width:62ch; margin:0 auto 18px; text-align:center}
+
+@media(min-width:721px){
+    .hero-copy{ text-align:left }
+    .hero-copy p{ text-align:left; margin:0 0 18px 0 }
+}
 .hero-image{width:100%;max-width:340px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.08)}
 /* Hero video (replaces hero image when present) */
 .hero-video{width:100%;max-width:400px;height:auto;border-radius:12px;object-fit:cover;box-shadow:0 10px 30px rgba(0,0,0,0.08)}
 .btn{display:inline-block;padding:12px 20px;border-radius:8px;text-decoration:none}
 .btn.primary{background:var(--accent);color:#fff}
+.btn.primary{transition:transform .18s ease,box-shadow .18s ease}
+.btn.primary:hover{transform:translateY(-4px) scale(1.02);box-shadow:0 12px 30px rgba(0,0,0,0.12)}
 
 .features{padding:40px 0;text-align:center}
 .features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-top:18px}
@@ -118,6 +127,8 @@ html, body { height: 100%; }
 /* Gentle floating animation for the logo */
 @keyframes logoFloat{0%{transform:translate(-50%,-50%) translateY(0)}50%{transform:translate(-50%,-50%) translateY(-6px)}100%{transform:translate(-50%,-50%) translateY(0)}}
 .logo{animation:logoFloat 4.5s ease-in-out infinite}
+
+@keyframes fadeUp{0%{opacity:0;transform:translateY(10px)}100%{opacity:1;transform:translateY(0)}}
 
 /* Ensure the nav toggle remains clickable and on top */
 .nav-toggle{position:relative;z-index:60}
