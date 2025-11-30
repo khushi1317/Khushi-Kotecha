@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Let's Reveal Khushi's 25 Years</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="logo" href="#">Khushi's 25</a>
+            <nav class="nav" id="siteNav">
+                <!-- Navigation links intentionally removed per user request -->
+            </nav>
+            <button id="navToggle" class="nav-toggle" aria-label="Toggle navigation">☰</button>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-inner">
+            <div class="hero-copy">
+                <h1>Let's Reveal Khushi's 25 Years</h1>
+                <p>Explore memories, photos, and audio from each year — one beautiful chapter at a time.</p>
+                <a class="btn primary" id="exploreBtn" href="#timeline">Explore the 25 Years</a>
+            </div>
+            <div class="hero-media">
+                <video class="hero-video" src="assets/d.mp4" poster="assets/d.png" autoplay muted loop playsinline></video>
+            </div>
+        </div>
+    </section>
+
+    <main class="container">
+        <section id="features" class="features">
+            <h2>What you'll find</h2>
+            <div class="features-grid">
+                <div class="feature">Photos & Stories</div>
+                <div class="feature">Audio Memories</div>
+                <div class="feature">Year-by-year Timeline</div>
+            </div>
+        </section>
+
+        <section id="timeline" class="timeline hidden">
+            <h2>Year Timeline</h2>
+            <div class="years">
+                <!-- Generate year buttons: 1-10, a grouped 11-20 button, then 21-25 -->
+                <script>
+                    // Group Years 1-10 under a single button that expands all their media
+                    document.write(`<button onclick="openRangeAll(1,10)">Years 1-10</button>`);
+                    document.write(`<button onclick="openRange(11,20,'assets/Year11-20.m4a')">Years 11-20</button>`);
+                    // Group years 21-25 under a single button
+                    document.write(`<button onclick="openRange(21,25,'assets/Year 21-25.m4a')">Years 21-25</button>`);
+                    // Khushi special media button
+                    document.write(`<button onclick="openKhushi()">Khushi</button>`);
+                    // Sonara special media button
+                    document.write(`<button onclick="openSonara()">Sonara</button>`);
+                </script>
+            </div>
+
+            <div id="yearContent" class="year-content">
+                <!-- Year content will appear here -->
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <!-- <h3>Want to contribute?</h3>
+            <p>Send photos or audio clips to the project owner to include more memories.</p> -->
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <small>© Khushi's 25 Years</small>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

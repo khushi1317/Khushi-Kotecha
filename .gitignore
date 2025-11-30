@@ -1,0 +1,13 @@
+# macOS
+.DS_Store
+
+# Editor configs
+.vscode/
+
+# Large media folder
+Assets/
+Year1/
+
+# Node
+node_modules/
+

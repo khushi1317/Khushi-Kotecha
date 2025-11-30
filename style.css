@@ -1,0 +1,104 @@
+:root{
+    --bg:#f9f7f6;
+    --card:#fff;
+    --muted:#666;
+    --accent:#ff6b6b;
+    --accent-2:#ffb6b9;
+    --max-width:1100px;
+}
+
+*{box-sizing:border-box}
+body{
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    margin:0;
+    color:#222;
+    background:var(--bg);
+    line-height:1.45;
+}
+
+.container{max-width:var(--max-width);margin:0 auto;padding:0 20px}
+
+.site-header{background:transparent}
+.header-inner{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+.logo{font-weight:700;color:#222;text-decoration:none}
+.nav{display:flex;gap:16px}
+.nav a{color:#333;text-decoration:none;font-weight:600}
+.nav-toggle{display:none;background:none;border:none;font-size:20px}
+
+.hero{padding:80px 0;background:linear-gradient(180deg, rgba(255,182,185,0.12), transparent)}
+.hero-inner{text-align:center}
+.hero h1{font-size:clamp(28px,4vw,42px);margin:0 0 12px}
+.hero p{color:var(--muted);margin:0 0 18px}
+
+/* Hero layout with image */
+.hero-inner{display:flex;align-items:center;gap:24px;justify-content:space-between}
+.hero-copy{flex:1;min-width:220px}
+.hero-copy h1{margin-bottom:8px}
+.hero-media{flex:0 0 340px;display:flex;justify-content:center}
+.hero-image{width:100%;max-width:340px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.08)}
+/* Hero video (replaces hero image when present) */
+.hero-video{width:100%;max-width:400px;height:auto;border-radius:12px;object-fit:cover;box-shadow:0 10px 30px rgba(0,0,0,0.08)}
+.btn{display:inline-block;padding:12px 20px;border-radius:8px;text-decoration:none}
+.btn.primary{background:var(--accent);color:#fff}
+
+.features{padding:40px 0;text-align:center}
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-top:18px}
+.feature{background:var(--card);padding:18px;border-radius:8px;box-shadow:0 6px 18px rgba(0,0,0,0.05)}
+
+.timeline{padding:30px 0}
+.timeline h2{text-align:center}
+.years{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:14px}
+.years button{padding:10px 14px;border-radius:8px;border:none;background:var(--accent-2);cursor:pointer;transition:transform .12s}
+.years button:hover{transform:translateY(-3px);background:var(--accent)}
+
+/* Hidden utility for sections we want to reveal on user action */
+.hidden{display:none !important}
+
+.year-content{margin-top:22px;text-align:center}
+.year-content img{max-width:100%;height:auto;border-radius:8px;margin-top:12px}
+
+/* Year gallery */
+.year-gallery{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:12px}
+.year-thumb{width:160px;max-width:45%;height:auto;border-radius:8px;object-fit:cover;box-shadow:0 8px 20px rgba(0,0,0,0.06)}
+
+/* Video styles for Year pages */
+.year-video-wrap{display:flex;justify-content:center;margin-top:12px}
+.year-video{width:100%;max-width:720px;border-radius:10px;box-shadow:0 14px 35px rgba(0,0,0,0.08)}
+
+.contact{padding:30px 0;text-align:center}
+
+.site-footer{padding:18px 0;text-align:center;color:var(--muted)}
+
+
+@media (max-width:720px){
+    .nav{display:none}
+    .nav-toggle{display:block}
+    .hero{padding:56px 0}
+    .hero-inner{flex-direction:column;text-align:center}
+    .hero-copy{text-align:center}
+    .hero-media{order: -1; width:80%; max-width:320px}
+}
+
+@media (min-width:721px){
+    .nav{display:flex}
+}
+
+/* Combined audio styling for grouped Years 1-10 */
+.range-combined-audio{display:flex;justify-content:center;margin-top:16px}
+.range-combined-audio audio{width:100%;max-width:720px}
+
+/* Center and highlight the logo in the header */
+.header-inner{position:relative}
+.logo{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:inline-block;padding:8px 18px;border-radius:999px;background:linear-gradient(90deg,var(--accent),#ff8a80);color:#fff;font-weight:800;letter-spacing:0.4px;box-shadow:0 12px 36px rgba(255,105,97,0.16);transition:transform .18s ease,box-shadow .18s ease}
+.logo:hover{transform:translate(-50%,-50%) scale(1.03);box-shadow:0 20px 50px rgba(255,105,97,0.22)}
+
+/* Gentle floating animation for the logo */
+@keyframes logoFloat{0%{transform:translate(-50%,-50%) translateY(0)}50%{transform:translate(-50%,-50%) translateY(-6px)}100%{transform:translate(-50%,-50%) translateY(0)}}
+.logo{animation:logoFloat 4.5s ease-in-out infinite}
+
+/* Ensure the nav toggle remains clickable and on top */
+.nav-toggle{position:relative;z-index:60}
+
+@media (max-width:720px){
+    .logo{padding:6px 12px;font-size:0.95rem}
+}
